@@ -347,7 +347,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 .logo-img { height: 40px; transition: var(--transition); }
-.navbar.scrolled .logo-img { filter: invert(1); } /* Basic invert for light bg if logo is white */
+.navbar.scrolled .logo-img { /* Removed invert filter */ }
 
 .desktop-nav { display: none; gap: 32px; }
 .nav-link {
@@ -395,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Footer */
 .footer { padding: 60px 0 30px; }
 .footer-container { display: grid; gap: 40px; grid-template-columns: 2fr 1fr 1fr; margin-bottom: 40px; }
-.footer-logo { height: 40px; margin-bottom: 16px; filter: invert(1); }
+.footer-logo { height: 40px; margin-bottom: 16px; }
 .footer-tagline { color: var(--text-muted); font-size: 0.95rem; }
 .footer-heading { font-size: 1.1rem; margin-bottom: 20px; color: var(--white); }
 .footer-nav { display: flex; flexDirection: column; gap: 12px; }
