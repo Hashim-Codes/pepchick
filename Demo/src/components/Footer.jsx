@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { restaurantConfig } from '../data/restaurant';
-import { MapPin, Phone, Camera } from 'lucide-react';
+import { socialData } from '../data/social';
+import { MapPin, Phone } from 'lucide-react';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -24,16 +26,20 @@ const Footer = () => {
 
         <div className="footer-contact">
           <h4 className="footer-heading">Contact</h4>
-          <div className="footer-contact-item">
+          <a href={`tel:${restaurantConfig.phone.replace(/[^0-9+]/g, '')}`} className="footer-contact-item">
             <Phone size={16} />
             <span>{restaurantConfig.phone}</span>
-          </div>
-          <div className="footer-contact-item">
+          </a>
+          <a href={`https://wa.me/${restaurantConfig.whatsapp.replace(/[^0-9+]/g, '')}`} target="_blank" rel="noopener noreferrer" className="footer-contact-item">
+            <FaWhatsapp size={18} color="#25D366" />
+            <span>WhatsApp: {restaurantConfig.whatsapp}</span>
+          </a>
+          <a href={restaurantConfig.mapsUrl} target="_blank" rel="noopener noreferrer" className="footer-contact-item">
             <MapPin size={16} />
             <span>{restaurantConfig.address.line2}</span>
-          </div>
-          <a href={restaurantConfig.mapsUrl} className="footer-social-link mt-4" target="_blank" rel="noopener noreferrer">
-            <Camera size={20} />
+          </a>
+          <a href={socialData.instagram.url} className="footer-social-link mt-4" target="_blank" rel="noopener noreferrer">
+            <FaInstagram size={22} color="#E1306C" />
             <span>Follow Us</span>
           </a>
         </div>

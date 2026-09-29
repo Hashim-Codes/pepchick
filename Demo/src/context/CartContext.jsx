@@ -14,26 +14,30 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('pepchick_cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (item) => {
+  const addToCart = (item, quantity = 1, portionName = null, priceOverride = null) => {
+    // Generate a unique cart item ID based on item.id and portion (if any)
+    const cartId = portionName ? `${item.id}-${portionName}` : item.id;
+    const finalPrice = priceOverride !== null ? priceOverride : item.price;
+
     setCart((prev) => {
-      const existing = prev.find((i) => i.id === item.id);
+      const existing = prev.find((i) => i.cartId === cartId);
       if (existing) {
-        return prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i));
+        return prev.map((i) => (i.cartId === cartId ? { ...i, quantity: i.quantity + quantity } : i));
       }
-      return [...prev, { ...item, quantity: 1 }];
+      return [...prev, { ...item, cartId, quantity, portionName, price: finalPrice }];
     });
   };
 
-  const removeFromCart = (id) => {
-    setCart((prev) => prev.filter((i) => i.id !== id));
+  const removeFromCart = (cartId) => {
+    setCart((prev) => prev.filter((i) => i.cartId !== cartId));
   };
 
-  const updateQuantity = (id, quantity) => {
+  const updateQuantity = (cartId, quantity) => {
     if (quantity <= 0) {
-      removeFromCart(id);
+      removeFromCart(cartId);
       return;
     }
-    setCart((prev) => prev.map((i) => (i.id === id ? { ...i, quantity } : i)));
+    setCart((prev) => prev.map((i) => (i.cartId === cartId ? { ...i, quantity } : i)));
   };
 
   const clearCart = () => {

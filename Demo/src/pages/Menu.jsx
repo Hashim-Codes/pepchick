@@ -3,6 +3,7 @@ import { menuData } from '../data/menu';
 import { useCart } from '../context/CartContext';
 import { Plus, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import FoodCard from '../components/FoodCard';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState(menuData.categories[0]);
@@ -41,21 +42,7 @@ const Menu = () => {
         {/* Menu Grid */}
         <div className="grid grid-cols-3">
           {filteredItems.map(item => (
-            <div key={item.id} className="food-card">
-              <div className="food-card-img-wrapper">
-                <img src={item.image} alt={item.name} className="food-card-img" />
-              </div>
-              <div className="food-card-content">
-                <h3 className="food-card-title">{item.name}</h3>
-                <p className="food-card-desc">{item.description}</p>
-                <div className="food-card-footer">
-                  <span className="food-card-price">₹{item.price}</span>
-                  <button onClick={() => addToCart(item)} className="food-card-add" aria-label="Add to cart">
-                    <Plus size={24} />
-                  </button>
-                </div>
-              </div>
-            </div>
+            <FoodCard key={item.id} item={item} />
           ))}
         </div>
       </div>
