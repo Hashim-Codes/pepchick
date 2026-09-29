@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PEPCHICK | Family Restaurant</title>
+<meta name="description" content="PEPCHICK Family Restaurant, Edavannapara. Explore the menu and send your order through WhatsApp." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E31837;
+  --red2: #ff4b43;
+  --ink: #0b0b0b;
+  --panel: #121212;
+  --panel2: #181818;
+  --cream: #f7f1e7;
+  --muted: #a9a9a9;
+  --line: #292929;
+  --green: #20b957;
+  --max: 1180px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(8,8,8,.9); backdrop-filter: blur(14px);
+  border-bottom: 1px solid #202020;
+}
+.navin {
+  max-width: var(--max); margin: auto; height: 72px;
+  display: flex; align-items: center; gap: 28px; padding: 0 22px;
+}
+.logo {
+  height: 43px; width: auto; background: transparent; border-radius: 4px; padding: 0; object-fit: contain;
+}
+.links { display: flex; gap: 28px; margin: auto; }
+.links a { color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; transition: color 0.2s; }
+.links a:hover, .links a.active { color: var(--red); }
+.cartbtn { position: relative; border: 0; background: transparent; color: #fff; font-size: 25px; transition: transform 0.2s; }
+.cartbtn:hover { transform: scale(1.1); }
+.badge {
+  position: absolute; right: -8px; top: -6px;
+  background: var(--red); font-size: 11px; line-height: 18px;
+  min-width: 18px; height: 18px; border-radius: 20px; font-weight: bold;
+}
+.hamb { display: none; background: none; border: 0; color: #fff; font-size: 25px; }
+
+.hero {
+  min-height: 690px; position: relative; display: grid; place-items: center; overflow: hidden;
+  background: var(--ink);
+}
+.herofood {
+  position: absolute; right: -5%; top: 0; height: 100%; width: 60%;
+  background-image: url('assets/Food Photos/ecab9d85-da58-422d-8709-deeca508594b.png');
+  background-size: cover; background-position: center;
+  mask-image: linear-gradient(to right, transparent, black 40%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+  opacity: 0.9;
+}
+.herofood:after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to left, transparent 40%, var(--ink) 100%);
+}
+.heroIn { position: relative; z-index: 2; width: min(var(--max), 100%); padding: 80px 22px; }
+.eyebrow { color: var(--red); font-weight: 900; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; }
+.hero h1 { font-size: clamp(54px, 8vw, 96px); line-height: .88; margin: 16px 0 18px; letter-spacing: -.06em; max-width: 650px; }
+.hero h1 span { color: var(--red); }
+.hero p { font-size: 20px; color: #ddd; max-width: 500px; line-height: 1.55; margin: 0 0 28px; }
+.loc { display: inline-flex; gap: 8px; color: #ddd; font-size: 14px; margin-bottom: 22px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.primary, .secondary { padding: 14px 22px; border-radius: 10px; font-weight: 800; border: 1px solid var(--red); font-size: 15px; transition: 0.2s; }
+.primary { background: var(--red); color: #fff; }
+.primary:hover { background: #c0132b; box-shadow: 0 4px 15px rgba(227,24,55,0.4); }
+.secondary { background: transparent; color: #fff; }
+.secondary:hover { background: var(--red); color: #fff; }
+
+.quick { max-width: var(--max); margin: -36px auto 0; position: relative; z-index: 5; padding: 0 22px; }
+.quickin {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: #171717; border: 1px solid #292929; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,.45);
+}
+.quick a { padding: 20px; text-decoration: none; color: #fff; border-right: 1px solid var(--line); transition: background 0.2s; }
+.quick a:hover { background: #222; }
+.quick a:last-child { border: 0; }
+.quick b { display: block; font-size: 15px; }
+.quick span { display: block; color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+.section { max-width: var(--max); margin: auto; padding: 100px 22px; }
+.kicker { color: var(--red); font-size: 12px; text-transform: uppercase; font-weight: 900; letter-spacing: .16em; }
+.title { font-size: clamp(34px, 5vw, 58px); letter-spacing: -.045em; line-height: 1; margin: 10px 0 16px; }
+.sub { color: var(--muted); max-width: 650px; line-height: 1.7; }
+
+.menuTabs { display: flex; gap: 8px; overflow: auto; padding-bottom: 8px; margin-top: 28px; }
+.tab { border: 1px solid #333; background: #151515; color: #ddd; padding: 10px 15px; border-radius: 99px; white-space: nowrap; transition: 0.2s; }
+.tab:hover { border-color: var(--red); color: #fff; }
+.tab.on { background: var(--red); border-color: var(--red); color: #fff; }
+
+.foodgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; }
+.food { background: var(--panel2); border: 1px solid #252525; border-radius: 16px; overflow: hidden; transition: transform 0.3s; }
+.food:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); border-color: #333; }
+.foodpic { height: 210px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+.foodbody { padding: 17px; }
+.food h3 { margin: 0 0 7px; font-size: 18px; }
+.food p { margin: 0; color: #999; font-size: 13px; line-height: 1.45; min-height: 38px; }
+.foodrow { display: flex; align-items: center; justify-content: space-between; margin-top: 15px; }
+.price { font-weight: 900; color: var(--cream); }
+.add { background: var(--red); color: #fff; border: 0; border-radius: 8px; padding: 9px 14px; font-weight: 800; transition: background 0.2s; }
+.add:hover { background: #c0132b; }
+
+.showcase { display: grid; grid-template-columns: 1.35fr .65fr; gap: 16px; margin-top: 38px; }
+.shot { min-height: 420px; border-radius: 18px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+.shot.small { min-height: 202px; }
+.shot:after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.8), transparent 65%); }
+.shottext { position: absolute; z-index: 2; left: 25px; bottom: 24px; }
+.shottext h3 { font-size: 30px; margin: 0 0 6px; }
+.shottext p { margin: 0; color: #ddd; }
+.side { display: grid; gap: 16px; }
+
+.experience { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.visual { height: 430px; border-radius: 20px; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+
+.insta { background: #111; border-top: 1px solid #202020; border-bottom: 1px solid #202020; }
+.instagrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 32px; }
+.instaCard { aspect-ratio: 1; border-radius: 10px; background-size: cover; background-position: center; border: 1px solid #222; transition: transform 0.3s; }
+.instaCard:hover { transform: scale(1.05); z-index: 10; border-color: var(--red); }
+
+.location { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+.map { border-radius: 18px; min-height: 360px; background-size: cover; background-position: center; position: relative; overflow: hidden; border: 1px solid #292929; }
+.pin { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; font-size: 45px; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: translate(-50%, -50%); } 50% { transform: translate(-50%, -60%); } }
+
+.contactbox { background: #161616; border: 1px solid #292929; border-radius: 18px; padding: 34px; }
+.contactbox p { color: #aaa; line-height: 1.7; }
+.contactline { padding: 14px 0; border-bottom: 1px solid #292929; }
+.contactline:last-child { border: 0; }
+.contactline b { display: block; color: #fff; }
+.contactline span { color: #aaa; font-size: 14px; }
+
+.footer { border-top: 1px solid #222; background: #080808; }
+.footin { max-width: var(--max); margin: auto; padding: 55px 22px 25px; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
+.footer h3 { margin: 0 0 15px; }
+.footer p, .footer a { color: #999; text-decoration: none; line-height: 1.8; }
+.footer a:hover { color: var(--red); }
+.copy { text-align: center; border-top: 1px solid #1d1d1d; color: #666; padding: 18px; }
+
+.drawer { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 100; display: none; backdrop-filter: blur(5px); }
+.drawer.open { display: block; }
+.cart { position: absolute; right: 0; top: 0; height: 100%; width: min(460px, 100%); background: #111; padding: 25px; overflow: auto; border-left: 1px solid #222; }
+.carthead { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 20px; }
+.close { background: none; border: 0; color: #fff; font-size: 30px; cursor: pointer; transition: color 0.2s; }
+.close:hover { color: var(--red); }
+.cartitem { display: grid; grid-template-columns: 62px 1fr auto; gap: 12px; padding: 16px 0; border-bottom: 1px solid #292929; }
+.thumb { border-radius: 10px; background-size: cover; background-position: center; height: 62px; }
+.qty { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.qty button { width: 26px; height: 26px; border: 1px solid #444; background: #191919; color: #fff; border-radius: 6px; }
+.qty button:hover { background: #333; }
+.checkout { margin-top: 24px; }
+.field { display: block; margin: 13px 0; }
+.field label { display: block; font-size: 12px; color: #aaa; margin-bottom: 6px; }
+.field input, .field textarea, .field select { width: 100%; background: #181818; color: #fff; border: 1px solid #333; border-radius: 9px; padding: 12px; outline: none; transition: border-color 0.2s; }
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--red); }
+.field textarea { min-height: 75px; resize: vertical; }
+.total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 900; padding: 18px 0; }
+.wa { width: 100%; background: var(--green); color: #fff; border: 0; border-radius: 10px; padding: 14px; font-weight: 900; transition: background 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+.wa:hover { background: #1a9646; }
+.notice { font-size: 11px; color: #777; margin-top: 8px; text-align: center; }
+
+@media(max-width:900px){
+  .foodgrid { grid-template-columns: repeat(2, 1fr); }
+  .quickin { grid-template-columns: repeat(2, 1fr); }
+  .quick a:nth-child(2) { border-right: 0; }
+  .quick a:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .showcase, .experience, .location { grid-template-columns: 1fr; }
+  .instagrid { grid-template-columns: repeat(3, 1fr); }
+  .herofood { width: 100%; mask-image: none; -webkit-mask-image: none; opacity: 0.3; }
+  .herofood:after { display: none; }
+  .footin { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:650px){
+  .navin { height: 64px; }
+  .links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; width: 100%; background: #111; padding: 20px; border-bottom: 1px solid #222; }
+  .hamb { display: block; }
+  .navin .hamb { order: 3; }
+  .navin .cartbtn { margin-left: auto; }
+  .hero { min-height: 650px; }
+  .heroIn { padding: 70px 20px 110px; }
+  .hero h1 { font-size: 58px; }
+  .hero p { font-size: 17px; }
+  .quick { margin: -28px 0 0; }
+  .quickin { grid-template-columns: 1fr 1fr; }
+  .quick a { padding: 16px; }
+  .section { padding: 75px 20px; }
+  .foodgrid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .foodpic { height: 145px; }
+  .foodbody { padding: 12px; }
+  .food h3 { font-size: 15px; }
+  .food p { font-size: 12px; }
+  .add { padding: 8px 10px; font-size: 12px; }
+  .showcase { gap: 10px; }
+  .shot { min-height: 280px; }
+  .shot.small { min-height: 135px; }
+  .experience .visual { height: 300px; }
+  .instagrid { grid-template-columns: repeat(3, 1fr); }
+  .footin { grid-template-columns: 1fr; padding: 42px 20px 22px; }
+  .hero .actions { width: 100%; }
+  .primary, .secondary { flex: 1; text-align: center; }
+  .cart { padding: 20px; }
+  .title { font-size: 40px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="navin">
+    <img class="logo" src="assets/Logo/7a00232d-8d00-4618-93e1-958a9aab97a8.png" alt="PEPCHICK" />
+    <div class="links">
+      <a href="#home" class="active" onclick="document.querySelector('.links').style.display=''">Home</a>
+      <a href="#menu" onclick="document.querySelector('.links').style.display=''">Menu</a>
+      <a href="#about" onclick="document.querySelector('.links').style.display=''">About</a>
+      <a href="#contact" onclick="document.querySelector('.links').style.display=''">Contact</a>
+    </div>
+    <button class="cartbtn" onclick="openCart()" aria-label="Open cart">🛒<span class="badge" id="badge">0</span></button>
+    <button class="hamb" onclick="let l=document.querySelector('.links');l.style.display=l.style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</nav>
+
+<main id="home">
+<section class="hero">
+  <div class="herofood"></div>
+  <div class="heroIn">
+    <div class="loc">● EDAVANNAPARA</div>
+    <div class="eyebrow">Family Restaurant</div>
+    <h1>PEP<span>CHICK</span></h1>
+    <p>Bold flavours. Freshly served. A modern home for PEPCHICK's food, menu and easy ordering.</p>
+    <div class="actions">
+      <button class="primary" onclick="document.querySelector('#menu').scrollIntoView()">Order Now →</button>
+      <button class="secondary" onclick="document.querySelector('#menu').scrollIntoView()">View Menu</button>
+    </div>
+  </div>
+</section>
+
+<div class="quick">
+  <div class="quickin">
+    <a href="#menu"><b>🍽 Order Online</b><span>Quick & easy</span></a>
+    <a href="#menu"><b>▦ View Menu</b><span>Explore our food</span></a>
+    <a href="tel:+919645212213"><b>☎ Call Now</b><span>+91 96452 12213</span></a>
+    <a href="#contact"><b>⌖ Get Directions</b><span>Edavannapara</span></a>
+  </div>
+</div>
+
+<section class="section" id="menu">
+  <div class="kicker">Our favourites</div>
+  <h2 class="title">What are you craving?</h2>
+  <p class="sub">Explore a demo of the food-first ordering experience. Owner-confirmed menu data can be dropped into the same interface before launch.</p>
+  
+  <div class="menuTabs">
+    <button class="tab on" onclick="filterMenu('all',this)">All</button>
+    <button class="tab" onclick="filterMenu('broast',this)">Broast</button>
+    <button class="tab" onclick="filterMenu('mandi',this)">Mandi</button>
+    <button class="tab" onclick="filterMenu('alfaham',this)">Al Faham</button>
+    <button class="tab" onclick="filterMenu('quick',this)">Quick Service</button>
+  </div>
+  <div class="foodgrid" id="foodgrid"></div>
+</section>
+
+<section class="section">
+  <div class="kicker">Food first</div>
+  <h2 class="title">Made for the scroll.</h2>
+  <p class="sub">A visual showcase designed around the way customers discover restaurants today: see the food, explore the menu, then order.</p>
+  <div class="showcase">
+    <div class="shot" style="background-image: url('assets/Food Photos/7b2d717f-cd8d-49d7-add6-de8c59ea10a4.png');">
+      <div class="shottext">
+        <h3>Bold. Smoky. Satisfying.</h3>
+        <p>PEPCHICK's food deserves the spotlight.</p>
+      </div>
+    </div>
+    <div class="side">
+      <div class="shot small" style="background-image: url('assets/Food Photos/aaab5a21-a853-4ff7-b6fb-25d80d607bfc.png');">
+        <div class="shottext"><h3>Fresh off the grill.</h3></div>
+      </div>
+      <div class="shot small" style="background-image: url('assets/Food Photos/6db83842-4100-451d-859b-77743863d103.png');">
+        <div class="shottext"><h3>Good food. Good company.</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="experience">
+    <div>
+      <div class="kicker">The experience</div>
+      <h2 class="title">Good food.<br>Good company.</h2>
+      <p class="sub">A warm digital home for a family restaurant in Edavannapara — built to showcase the food and make the next step obvious.</p>
+      <button class="primary" onclick="document.querySelector('#contact').scrollIntoView()">Find PEPCHICK →</button>
+    </div>
+    <div class="visual" style="background-image: url('assets/Restaurant Photos/Screenshot 2026-09-27 121832.png');"></div>
+  </div>
+</section>
+
+<section class="section insta">
+  <div class="kicker">From our table to your feed</div>
+  <h2 class="title">Follow the flavour.</h2>
+  <p class="sub">PEPCHICK is already active on Instagram. The website connects that social discovery to a structured menu and ordering journey.</p>
+  <div class="instagrid">
+    <a href="https://instagram.com/pepchick.official" target="_blank" class="instaCard" style="background-image: url('assets/Food Photos/ecab9d85-da58-422d-8709-deeca508594b.png');"></a>
+    <a href="https://instagram.com/pepchick.official" target="_blank" class="instaCard" style="background-image: url('assets/Food Photos/d7612733-f18b-4f6e-b19a-d06e96eaf8f9.png');"></a>
+    <a href="https://instagram.com/pepchick.official" target="_blank" class="instaCard" style="background-image: url('assets/Food Photos/aaab5a21-a853-4ff7-b6fb-25d80d607bfc.png');"></a>
+    <a href="https://instagram.com/pepchick.official" target="_blank" class="instaCard" style="background-image: url('assets/Food Photos/7b2d717f-cd8d-49d7-add6-de8c59ea10a4.png');"></a>
+    <a href="https://instagram.com/pepchick.official" target="_blank" class="instaCard" style="background-image: url('assets/Food Photos/6db83842-4100-451d-859b-77743863d103.png');"></a>
+    <a href="https://instagram.com/pepchick.official" target="_blank" class="instaCard" style="background-image: url('assets/Food Photos/5ed1e597-d9c3-4736-8087-e58e54efdc86.png');"></a>
+  </div>
+  <div style="margin-top:24px">
+    <a class="secondary" style="display:inline-block;text-decoration:none" href="https://instagram.com/pepchick.official" target="_blank">Follow @pepchick.official</a>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="location">
+    <div class="map" style="background-image: url('assets/Restaurant Photos/Screenshot 2026-09-27 121815.png');">
+      <div class="pin">📍</div>
+    </div>
+    <div class="contactbox">
+      <div class="kicker">Come find us</div>
+      <h2 class="title" style="font-size:44px">PEPCHICK</h2>
+      <p>Opp. Petrol Pump, Calicut Road, Edavannapara</p>
+      <div class="contactline"><b>Phone</b><span>+91 96452 12213</span></div>
+      <div class="contactline"><b>Instagram</b><span>@pepchick.official</span></div>
+      <div class="actions" style="margin-top:22px">
+        <a class="primary" style="text-decoration:none" href="tel:+919645212213">Call Now</a>
+        <button class="secondary" onclick="openCart()">Start Order</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footin">
+    <div>
+      <h3>PEPCHICK</h3>
+      <p>Family Restaurant<br>Edavannapara</p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <p><a href="#home">Home</a><br><a href="#menu">Menu</a><br><a href="#about">About</a><br><a href="#contact">Contact</a></p>
+    </div>
+    <div>
+      <h3>Connect</h3>
+      <p><a href="tel:+919645212213">+91 96452 12213</a><br><a href="https://instagram.com/pepchick.official" target="_blank">@pepchick.official</a></p>
+    </div>
+  </div>
+  <div class="copy">© 2026 PEPCHICK. Demo website — menu/prices require owner confirmation.</div>
+</footer>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()">
+  <aside class="cart">
+    <div class="carthead">
+      <h2>Your Cart</h2>
+      <button class="close" onclick="closeCart()">×</button>
+    </div>
+    <div id="cartitems"></div>
+    <div class="checkout">
+      <div class="total"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+      <div class="field"><label>Full Name</label><input id="name" placeholder="Enter your name"></div>
+      <div class="field"><label>Phone Number</label><input id="phone" placeholder="Enter phone number"></div>
+      <div class="field"><label>Order Type</label><select id="type"><option>Pickup</option><option>Delivery</option></select></div>
+      <div class="field"><label>Address</label><textarea id="address" placeholder="Required for delivery"></textarea></div>
+      <div class="field"><label>Notes</label><textarea id="notes" placeholder="Any special requests?"></textarea></div>
+      <button class="wa" onclick="sendWhatsApp()">💬 Send Order on WhatsApp</button>
+      <div class="notice">Demo flow. Confirm final WhatsApp number and ordering rules with PEPCHICK before production.</div>
+    </div>
+  </aside>
+</div>
+
+<script>
+const menu = [
+  {name:'6-Piece Signature Broast',cat:'broast',desc:'Crispy fried chicken served with Fries and Garlic Paste.',price:350, img:'assets/Food Photos/ecab9d85-da58-422d-8709-deeca508594b.png'},
+  {name:'9-Piece Signature Broast',cat:'broast',desc:'Perfect for sharing. Served with extra fries.',price:500, img:'assets/Food Photos/d7612733-f18b-4f6e-b19a-d06e96eaf8f9.png'},
+  {name:'Normal Kuzhimanthi (Half)',cat:'mandi',desc:'Aromatic Mandi rice served with slow-cooked tender chicken.',price:240, img:'assets/Food Photos/aaab5a21-a853-4ff7-b6fb-25d80d607bfc.png'},
+  {name:'BBQ Mandi (Full)',cat:'mandi',desc:'Rich BBQ chicken served over flavorful steaming Mandi rice.',price:450, img:'assets/Food Photos/7b2d717f-cd8d-49d7-add6-de8c59ea10a4.png'},
+  {name:'Peri-Peri Alfaham (Half)',cat:'alfaham',desc:'Spicy grilled chicken marinated in our signature sauce.',price:240, img:'assets/Food Photos/6db83842-4100-451d-859b-77743863d103.png'},
+  {name:'Green Chilli Grilled Chicken',cat:'alfaham',desc:'Quarter grilled chicken with a serious kick.',price:120, img:'assets/Food Photos/5ed1e597-d9c3-4736-8087-e58e54efdc86.png'},
+  {name:'Classic Chicken Shawarma',cat:'quick',desc:'Juicy chicken wrapped with fresh veggies and garlic paste.',price:90, img:'assets/Food Photos/2bc31125-b1ee-4ef7-920a-d341c252bf94.png'}
+];
+
+let cart = [];
+function money(n) { return '₹'+n.toLocaleString('en-IN'); }
+
+function renderMenu(items=menu) {
+  document.getElementById('foodgrid').innerHTML = items.map((x,i) => `
+    <article class="food">
+      <div class="foodpic" style="background-image: url('${x.img}')"></div>
+      <div class="foodbody">
+        <h3>${x.name}</h3>
+        <p>${x.desc}</p>
+        <div class="foodrow">
+          <span class="price">${money(x.price)}</span>
+          <button class="add" onclick="add(${menu.indexOf(x)})">Add</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function filterMenu(cat,el) {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+  el.classList.add('on');
+  renderMenu(cat === 'all' ? menu : menu.filter(x => x.cat === cat));
+}
+
+function add(i) {
+  const x = menu[i], found = cart.find(y => y.name === x.name);
+  if(found) found.qty++;
+  else cart.push({...x, qty:1});
+  updateCart();
+  openCart();
+}
+
+function updateCart() {
+  document.getElementById('badge').textContent = cart.reduce((a,x) => a+x.qty, 0);
+  document.getElementById('cartitems').innerHTML = cart.length ? cart.map((x,i) => `
+    <div class="cartitem">
+      <div class="thumb" style="background-image: url('${x.img}')"></div>
+      <div>
+        <b>${x.name}</b>
+        <div style="color:#aaa;font-size:12px">${money(x.price)} × ${x.qty}</div>
+        <div class="qty">
+          <button onclick="change(${i},-1)">−</button>
+          <span>${x.qty}</span>
+          <button onclick="change(${i},1)">+</button>
+        </div>
+      </div>
+      <b>${money(x.price*x.qty)}</b>
+    </div>
+  `).join('') : '<p style="color:#777;padding:30px 0">Your cart is empty. Add something delicious.</p>';
+  const total = cart.reduce((a,x) => a+x.price*x.qty, 0);
+  document.getElementById('subtotal').textContent = money(total);
+}
+
+function change(i,d) {
+  cart[i].qty += d;
+  if(cart[i].qty <= 0) cart.splice(i,1);
+  updateCart();
+}
+
+function openCart() {
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  updateCart();
+}
+
+function closeCart() {
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function sendWhatsApp() {
+  if(!cart.length) return alert('Add at least one item first.');
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const type = document.getElementById('type').value;
+  const address = document.getElementById('address').value.trim();
+  const notes = document.getElementById('notes').value.trim();
+  
+  if(!name || !phone) return alert('Please enter your name and phone number.');
+  
+  const lines = cart.map(x => `${x.qty} × ${x.name} — ${money(x.qty*x.price)}`).join('\n');
+  const total = cart.reduce((a,x) => a+x.price*x.qty, 0);
+  const msg = `*PEPCHICK ORDER*\n\nCustomer: ${name}\nPhone: ${phone}\n\n*Order:*\n${lines}\n\n*Subtotal: ${money(total)}*\nOrder Type: ${type}\nAddress: ${address||'-'}\nNotes: ${notes||'-'}\n\nPlease confirm my order.`;
+  
+  window.open('https://wa.me/919645212213?text='+encodeURIComponent(msg), '_blank');
+}
+
+renderMenu();
+updateCart();
+</script>
+</body>
+</html>
