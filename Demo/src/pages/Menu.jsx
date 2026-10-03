@@ -14,7 +14,7 @@ const Menu = () => {
     : menuData.items.filter(item => item.category === activeCategory);
 
   return (
-    <div className={`section ${getTotalItems() > 0 ? 'page-with-cart' : ''}`}>
+    <div className="section">
       <div className="container">
         <div className="text-center mb-8">
           <span className="eyebrow">Discover</span>
@@ -47,18 +47,6 @@ const Menu = () => {
         </div>
       </div>
 
-      {/* Sticky Mobile Cart CTA */}
-      {getTotalItems() > 0 && (
-        <div className="mobile-sticky-cart">
-          <div>
-            <span className="font-bold" style={{ display: 'block' }}>{getTotalItems()} Items</span>
-            <span className="text-primary font-bold">₹{getSubtotal()}</span>
-          </div>
-          <Link to="/cart" className="btn btn-primary">
-            Checkout <ArrowRight size={20} />
-          </Link>
-        </div>
-      )}
     </div>
   );
 };

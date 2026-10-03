@@ -26,9 +26,9 @@ const Footer = () => {
 
         <div className="footer-contact">
           <h4 className="footer-heading">Contact</h4>
-          <a href={`tel:${restaurantConfig.phone.replace(/[^0-9+]/g, '')}`} className="footer-contact-item">
+          <a href={`tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`} className="footer-contact-item">
             <Phone size={16} />
-            <span>{restaurantConfig.phone}</span>
+            <span>{restaurantConfig.verifiedOrderNumber}</span>
           </a>
           <a href={`https://wa.me/${restaurantConfig.whatsapp.replace(/[^0-9+]/g, '')}`} target="_blank" rel="noopener noreferrer" className="footer-contact-item">
             <FaWhatsapp size={18} color="#25D366" />

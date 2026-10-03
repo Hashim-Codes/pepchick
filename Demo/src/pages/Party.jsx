@@ -24,17 +24,7 @@ const Party = () => {
 
   const handleEnquiry = (e) => {
     e.preventDefault();
-    const suggestedTier = getSuggestedTier(formData.guests);
-    let msg = `🔴 *PARTY ENQUIRY - PEPCHICK* 🔴\n\n`;
-    msg += `Name: ${formData.name}\n`;
-    msg += `Phone: ${formData.phone}\n`;
-    msg += `Date: ${formData.date}\n`;
-    msg += `Guest Count: ${formData.guests}\n\n`;
-    msg += `Interested in: ${suggestedTier}\n\n`;
-    msg += `Please contact me to discuss the menu and pricing.`;
-    
-    const phone = restaurantConfig.whatsapp.replace(/[^0-9+]/g, '');
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    window.location.href = `tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`;
   };
 
   return (
@@ -84,8 +74,8 @@ const Party = () => {
                 </p>
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '16px', fontSize: '1.1rem' }}>
-                Send Enquiry on WhatsApp <ArrowRight size={20} />
+              <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '16px', fontSize: '1.1rem', justifyContent: 'center' }}>
+                <Phone size={20} style={{ marginRight: '8px' }} /> Call to Discuss Party Order
               </button>
             </form>
           </div>

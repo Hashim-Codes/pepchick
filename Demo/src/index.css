@@ -359,25 +359,37 @@ h1, h2, h3, h4, h5, h6 {
 .mb-8 { margin-bottom: 2rem; }
 .mb-12 { margin-bottom: 3rem; }
 
-/* Sticky Mobile Cart */
-.mobile-sticky-cart {
+/* Sticky Mobile CTA Bar */
+.mobile-sticky-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background: var(--white);
-  padding: 16px 20px;
+  padding: 12px 16px;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-  z-index: 100;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  gap: 12px;
   align-items: center;
   border-top-left-radius: var(--radius-md);
   border-top-right-radius: var(--radius-md);
 }
 
-.page-with-cart {
-  padding-bottom: 90px;
+@media (min-width: 769px) {
+  .mobile-sticky-bar {
+    display: none;
+  }
+}
+
+.page {
+  padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding-bottom: 80px; /* Make room for sticky bar */
+  }
 }
 /* Navbar */
 .navbar {

@@ -8,6 +8,9 @@ import Cart from './pages/Cart';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Party from './pages/Party';
+import { Phone, Menu as MenuIcon } from 'lucide-react';
+import { Link as RouterLink } from 'react-router-dom';
+import { restaurantConfig } from './data/restaurant';
 
 function App() {
   return (
@@ -28,6 +31,16 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      
+      {/* Global Sticky Mobile CTA */}
+      <div className="mobile-sticky-bar">
+        <RouterLink to="/menu" className="btn btn-outline" style={{ flex: 1, padding: '12px' }}>
+          <MenuIcon size={18} /> View Menu
+        </RouterLink>
+        <a href={`tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`} className="btn btn-primary" style={{ flex: 1, padding: '12px' }}>
+          <Phone size={18} /> Call to Order
+        </a>
+      </div>
     </div>
   );
 }

@@ -16,13 +16,13 @@ const Contact = () => {
         <div style={{ backgroundColor: 'var(--white)', padding: '40px', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)' }}>
           <h2 className="title-md mb-8">We'd Love to Hear From You</h2>
           
-          <a href={`tel:${restaurantConfig.phone.replace(/[^0-9+]/g, '')}`} style={{ display: 'flex', gap: '20px', marginBottom: '24px', alignItems: 'flex-start', textDecoration: 'none', color: 'inherit', cursor: 'pointer', padding: '12px', borderRadius: '8px', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
+          <a href={`tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`} style={{ display: 'flex', gap: '20px', marginBottom: '24px', alignItems: 'flex-start', textDecoration: 'none', color: 'inherit', cursor: 'pointer', padding: '12px', borderRadius: '8px', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
             <div style={{ backgroundColor: 'rgba(227, 24, 55, 0.1)', padding: '16px', borderRadius: '50%', color: 'var(--pepchick-red)' }}>
               <Phone size={24} />
             </div>
             <div style={{ paddingTop: '4px' }}>
               <h4 style={{ fontSize: '1.25rem', marginBottom: '4px' }}>Call Us</h4>
-              <p className="subtitle">{restaurantConfig.phone}</p>
+              <p className="subtitle">{restaurantConfig.verifiedOrderNumber}</p>
             </div>
           </a>
 

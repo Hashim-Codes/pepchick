@@ -4,7 +4,8 @@ export const restaurantConfig = {
   type: "Family Restaurant",
   logo: "/assets/Logo/7a00232d-8d00-4618-93e1-958a9aab97a8.png",
   phone: "+91 96452 12213",
-  whatsapp: "+91 96452 12213", // To be verified for WhatsApp automated ordering
+  verifiedOrderNumber: "+91 96452 12213", // OWNER MUST VERIFY THIS BEFORE PRODUCTION
+  whatsapp: "+91 96452 12213", // Secondary contact only
   address: {
     line1: "Opp. Petrol Pump",
     line2: "Calicut Road, Edavannapara"

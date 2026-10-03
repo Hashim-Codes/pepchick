@@ -24,11 +24,11 @@ const Home = () => {
           <p className="hero-v2-tagline">{restaurantConfig.tagline}</p>
           
           <div className="hero-v2-actions">
-            <Link to="/menu" className="btn btn-primary">
-              Order Now <ArrowRight size={20} />
-            </Link>
+            <a href={`tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`} className="btn btn-primary">
+              <Phone size={20} /> Call to Order
+            </a>
             <Link to="/menu" className="btn btn-outline" style={{ borderColor: 'var(--white)', color: 'var(--white)' }}>
-              Explore Menu
+              View Menu
             </Link>
           </div>
           
@@ -48,11 +48,11 @@ const Home = () => {
           </Link>
           <Link to="/menu" className="quick-action-item">
             <span className="quick-action-title">View Menu</span>
-            <span className="quick-action-desc">Our Full Selection</span>
+            <span className="quick-action-desc">Explore our items</span>
           </Link>
-          <a href={`tel:${restaurantConfig.phone.replace(/\s+/g, '')}`} className="quick-action-item">
-            <span className="quick-action-title">Call Us</span>
-            <span className="quick-action-desc">{restaurantConfig.phone}</span>
+          <a href={`tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`} className="quick-action-item">
+            <span className="quick-action-title">Call to Order</span>
+            <span className="quick-action-desc">{restaurantConfig.verifiedOrderNumber}</span>
           </a>
           <a href={restaurantConfig.mapsUrl} target="_blank" rel="noopener noreferrer" className="quick-action-item">
             <span className="quick-action-title">Location</span>
@@ -152,11 +152,11 @@ const Home = () => {
                 <p className="text-xl">{restaurantConfig.address.line2}</p>
               </div>
               <div className="location-actions">
-                <a href={restaurantConfig.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Get Directions
+                <a href={`tel:${restaurantConfig.verifiedOrderNumber.replace(/[^0-9+]/g, '')}`} className="btn btn-primary">
+                  <Phone size={18} /> Call to Order
                 </a>
-                <a href={`tel:${restaurantConfig.phone.replace(/\s+/g, '')}`} className="btn btn-outline">
-                  <Phone size={18} /> Call Us
+                <a href={restaurantConfig.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                  Get Directions
                 </a>
               </div>
             </div>
